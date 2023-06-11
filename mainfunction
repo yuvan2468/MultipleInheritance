@@ -1,0 +1,43 @@
+import java.applet.Applet; 
+import java.awt.*;
+import java.awt.event.*;
+public class MultipleSelectionList1 extends Applet implements ActionListener
+{
+List list1; 
+TextField Text1; 
+Button butt; 
+public void init()
+{
+Text1=new TextField(40); 
+add(Text1);
+list1=new List(3,true); 
+list1.add("Windows NT"); 
+list1.add("Windows Vista"); 
+list1.add("Windows XP"); 
+list1.add("LINUX");
+list1.add("UNIX");
+list1.add("Xenix"); 
+add(list1);
+butt=new Button("Show Selection"); 
+butt.addActionListener(this); 
+add(butt);
+}
+String Selections[];
+public void actionPerformed(ActionEvent e) { 
+String outstring=new String("you selected"); 
+if(e.getSource()==butt)
+{
+Text1.setText(""); 
+Selections=list1.getSelectedItems();
+for(int loopIndex=0;loopIndex<Selections.length;loopIndex++) 
+{ 
+outstring+=" "+Selections[loopIndex]; } 
+Text1.setText(outstring);
+}
+}
+}
+/*
+<html>
+<applet code = MultipleSelectionList1.class width=400 height=400>
+</applet>
+</html> */
